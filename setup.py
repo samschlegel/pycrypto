@@ -38,10 +38,8 @@ __revision__ = "$Id$"
 
 from distutils import core
 from distutils.ccompiler import new_compiler
-from distutils.core import Extension, Command
-from distutils.command.build import build
-from distutils.command.build_ext import build_ext
-from setuptools import setup
+from setuptools.command import build_ext, build_py
+from setuptools import setup, Extension, Command
 import distutils.sysconfig
 import os, sys, re
 import struct
@@ -68,12 +66,8 @@ else:
 USE_GCOV = 0
 
 
-try:
-    # Python 3
-    from distutils.command.build_py import build_py_2to3 as build_py
-except ImportError:
-    # Python 2
-    from distutils.command.build_py import build_py
+
+
 
 # List of pure Python modules that will be excluded from the binary packages.
 # The list consists of (package, module_name) tuples
